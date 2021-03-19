@@ -2,14 +2,13 @@
 
 @using DataAccessLibrary
 @using DataAccessLibrary.Models
-@using BlazorApp.UI.Models
 
 @inject IPeopleData _db
 
 <h1>People Page</h1>
 
 <h4>Insert New Person</h4>
-<EditForm Model="@newPerson" OnValidSubmit="@InsertPerson">
+<EditForm Model="@newPerson" OnValidSubmit="InsertPerson">
     <DataAnnotationsValidator />
     <ValidationSummary />
 
