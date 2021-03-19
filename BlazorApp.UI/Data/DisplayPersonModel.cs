@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlazorApp.UI.Models
+namespace BlazorApp.UI.Data
 {
     public class DisplayPersonModel
     {

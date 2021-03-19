@@ -15,3 +15,27 @@ Welcome to your new app.
         <TaskList Name="Marry"></TaskList>
     </div>
 </div>
+
+<p>
+    <EditForm Model="demo">
+        <InputRadioGroup Name="age" @bind-Value="demo.Age">
+            User Age: <br />
+            @for (int i = 21; i < 35; i++)
+            {
+                <InputRadio Value="i" />
+                @i
+                <br />
+            }
+        </InputRadioGroup>
+    </EditForm>
+</p>
+
+@code{
+    private DemoModel demo = new();
+
+    class DemoModel
+    {
+        public int Age { get; set; }
+    }
+
+}
