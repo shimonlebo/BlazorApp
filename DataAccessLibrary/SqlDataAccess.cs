@@ -1,14 +1,12 @@
 ﻿using Dapper;
 using Microsoft.Extensions.Configuration;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace BlazorApp.Data
+namespace DataAccessLibrary
 {
     public class SqlDataAccess : ISqlDataAccess
     {
@@ -25,22 +23,20 @@ namespace BlazorApp.Data
         {
             string connectionString = _config.GetConnectionString(ConnectionStringName);
 
-            using (IDbConnection connection = new SqlConnection(connectionString))
-            {
-                var data = await connection.QueryAsync<T>(sql, parameters);
+            using IDbConnection connection = new SqlConnection(connectionString);
 
-                return data.ToList();
-            }
+            var data = await connection.QueryAsync<T>(sql, parameters);
+
+            return data.ToList();
         }
 
         public async Task SaveData<T>(string sql, T parameters)
         {
             string connectionString = _config.GetConnectionString(ConnectionStringName);
 
-            using (IDbConnection connection = new SqlConnection(connectionString))
-            {
-                await connection.ExecuteAsync(sql, parameters);
-            }
+            using IDbConnection connection = new SqlConnection(connectionString);
+
+            await connection.ExecuteAsync(sql, parameters);
         }
     }
 }

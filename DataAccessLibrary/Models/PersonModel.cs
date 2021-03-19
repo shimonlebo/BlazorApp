@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlazorApp.Data.Models
+namespace DataAccessLibrary.Models
 {
     public class PersonModel
     {
